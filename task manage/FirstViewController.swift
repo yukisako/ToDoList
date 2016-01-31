@@ -20,7 +20,12 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("toDoList") != nil {
+            
+            toDoList = NSUserDefaults.standardUserDefaults().objectForKey("toDoList") as! [String]
+        
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +54,8 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     //画面が表示されるごとに呼ばれるメソッド
         toDoListTable.reloadData()
     }
+    
+
     
 
     
