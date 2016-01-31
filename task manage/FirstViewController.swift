@@ -49,6 +49,22 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+        //テーブルのアイテムを編集するときに呼ばれるメソッド
+        
+        //左にスワイプ
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            toDoList.removeAtIndex(indexPath.row)
+            
+            NSUserDefaults.standardUserDefaults().setObject(toDoList, forKey: "toDoList")
+            
+            toDoListTable.reloadData()
+            
+        }
+        
+        
+    }
     
     override func viewDidAppear(animated: Bool) {
     //画面が表示されるごとに呼ばれるメソッド
